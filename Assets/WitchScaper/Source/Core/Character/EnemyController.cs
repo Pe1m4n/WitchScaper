@@ -26,6 +26,11 @@ namespace WitchScaper.Core.Character
 
         public void OnHit(ProjectileData projectileData)
         {
+            if (_data.Color != projectileData.ProjectileColor)
+            {
+                return;
+            }
+            
             if (!_turned && projectileData.ProjectileType == ProjectileData.Type.Hex)
             {
                 Turn(true);
