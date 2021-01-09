@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 using UnityEngine;
+using UnityEngine.UI;
 using WitchScaper.Core.Character;
 using WitchScaper.Core.State;
 
@@ -12,6 +13,7 @@ namespace WitchScaper.Core.UI
     {
         [SerializeField] private List<AmmoSlot> _slots;
         [SerializeField] private ProjectileData.Type Type;
+        [SerializeField] private Image _reloadMask;
         
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
 
@@ -30,6 +32,14 @@ namespace WitchScaper.Core.UI
                     lastColorTypes.Clear();
                     lastColorTypes.AddRange(l);
                 }).AddTo(_disposable);
+
+            state.Select(s =>
+                    Type == ProjectileData.Type.Hex ? s.PlayerState.TimeToReloadHex : s.PlayerState.TimeToReloadAmmo)
+                .Subscribe(
+                    v =>
+                    {
+                        _reloadMask.fillAmount = Mathf.Clamp01(v);
+                    }).AddTo(_disposable);
         }
         
         public void SetColors(List<ColorType> colorTypes)

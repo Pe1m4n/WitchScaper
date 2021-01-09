@@ -9,5 +9,6 @@ namespace WitchScaper.Core.Character
         public ColorType Color;
         public float TurnedTimeSeconds;
         public float AggroRadius = 10f;
+        public float Speed = 6f;
     }
 }

@@ -6,5 +6,6 @@ namespace WitchScaper.Core.Character
     public class CharacterControllerData : ScriptableObject
     {
         public float Speed;
+        public float ReloadSeconds = 1f;
     }
 }

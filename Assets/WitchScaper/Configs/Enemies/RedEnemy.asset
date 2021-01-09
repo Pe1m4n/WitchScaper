@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32f8e4d4d4dc48e5b7ebb452ee1ab6e2, type: 3}
-  m_Name: TestEnemy
+  m_Name: RedEnemy
   m_EditorClassIdentifier: 
   Prefab: {fileID: 0}
-  Color: 0
+  Color: 1
   TurnedTimeSeconds: 4
-  AggroRadius: 10
+  AggroRadius: 8
+  Speed: 5

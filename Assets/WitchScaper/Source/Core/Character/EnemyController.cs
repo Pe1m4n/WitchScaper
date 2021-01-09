@@ -24,6 +24,11 @@ namespace WitchScaper.Core.Character
             
         }
 
+        private void Awake()
+        {
+            _aiPath.maxSpeed = _data.Speed;
+        }
+
         public void OnHit(ProjectileData projectileData)
         {
             if (_data.Color != projectileData.ProjectileColor)

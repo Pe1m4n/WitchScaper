@@ -8,6 +8,9 @@ namespace WitchScaper.Core.State
     {
         public List<ColorType> HexAmmo = new List<ColorType>() {ColorType.Green, ColorType.Blue, ColorType.Red};
         public List<ColorType> DamageAmmo = new List<ColorType>() {ColorType.Green, ColorType.Blue, ColorType.Red};
+
+        public float TimeToReloadHex;
+        public float TimeToReloadAmmo;
     }
 
     public static class PlayerStateExtensions

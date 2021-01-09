@@ -21,7 +21,7 @@ namespace WitchScaper.Core.Character
         {
             _movementController = new MovementController(GetComponent<Rigidbody2D>(), _data, gameState);
             _shootingController = new ShootingController(projectileFactory, _shootingPivot, gameState, inputSystem,
-                projectileDataContainer);
+                projectileDataContainer, _data);
         }
 
         private void Update()
