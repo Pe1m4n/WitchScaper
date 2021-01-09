@@ -10,18 +10,16 @@ namespace WitchScaper.Core.Character
         private readonly Transform _shootingPivot;
         private readonly GameState _state;
         private readonly IInputSystem _inputSystem;
-        private readonly ProjectileData _projectileDataHex;
-        private readonly ProjectileData _projectileDataDamage;
+        private readonly ProjectileDataContainer _projectileDataContainer;
 
         public ShootingController(ProjectileFactory projectileFactory, Transform shootingPivot,
-            GameState state, IInputSystem inputSystem, ProjectileData projectileDataHex, ProjectileData projectileDataDamage)
+            GameState state, IInputSystem inputSystem, ProjectileDataContainer projectileDataContainer)
         {
             _projectileFactory = projectileFactory;
             _shootingPivot = shootingPivot;
             _state = state;
             _inputSystem = inputSystem;
-            _projectileDataHex = projectileDataHex;
-            _projectileDataDamage = projectileDataDamage;
+            _projectileDataContainer = projectileDataContainer;
         }
 
         public void Update()
@@ -47,7 +45,12 @@ namespace WitchScaper.Core.Character
             var mousePos = _inputSystem.GetMousePosition();
             var rotation = Quaternion.FromToRotation(_shootingPivot.transform.position, mousePos);
 
-            var projectile = _projectileFactory.Create(isDamage? _projectileDataDamage : _projectileDataHex, _shootingPivot.position, rotation);
+            var indexToShoot = 0;
+            var ammoContainer = isDamage ? _state.PlayerState.DamageAmmo : _state.PlayerState.HexAmmo;
+            var projectileData = _projectileDataContainer.GetDataForColor(ammoContainer[indexToShoot], !isDamage);
+            _state.PlayerState.UseAmmo(isDamage, indexToShoot);
+            
+            var projectile = _projectileFactory.Create(projectileData, _shootingPivot.position, rotation);
             projectile.SetForce((mousePos - new Vector2(_shootingPivot.position.x, _shootingPivot.position.y))
                 .normalized);
         }

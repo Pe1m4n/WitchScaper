@@ -17,7 +17,7 @@ namespace WitchScaper.Core
         
         public Projectile Create(ProjectileData data, Vector3 position, Quaternion rotation)
         {
-            var projectile = _container.InstantiatePrefabForComponent<Projectile>(data.Prefab, position, rotation, _projectileContainer, new List<object>(){data});
+            var projectile = _container.InstantiatePrefabForComponent<Projectile>(data.Prefab, new Vector3(position.x, position.y, -0.1f), rotation, _projectileContainer, new List<object>(){data});
             return projectile;
         }
         
