@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96855bf0b5d34bd098229a406af1772b, type: 3}
+  m_Name: TestHex
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 4581982121870292740, guid: a1655945c3a555c4999310eb2610aa0b, type: 3}
+  Speed: 2
+  ProjectileType: 0
+  ProjectileColor: 0
