@@ -15,3 +15,4 @@ MonoBehaviour:
   Prefab: {fileID: 0}
   Color: 0
   TurnedTimeSeconds: 4
+  AggroRadius: 10

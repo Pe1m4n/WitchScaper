@@ -8,5 +8,6 @@ namespace WitchScaper.Core.Character
         public GameObject Prefab;
         public ColorType Color;
         public float TurnedTimeSeconds;
+        public float AggroRadius = 10f;
     }
 }

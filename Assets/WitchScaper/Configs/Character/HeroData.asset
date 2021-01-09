@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae0a654212744b32925ac19e3dac0d4b, type: 3}
   m_Name: HeroData
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 5
