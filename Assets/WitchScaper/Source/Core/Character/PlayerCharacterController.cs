@@ -27,7 +27,7 @@ namespace WitchScaper.Core.Character
         {
             _gameState = gameState;
             _qteController = qteController;
-            _movementController = new MovementController(GetComponent<Rigidbody2D>(), _data, gameState);
+            _movementController = new MovementController(GetComponent<Rigidbody2D>(), _data, gameState, transform);
             _shootingController = new ShootingController(projectileFactory, _shootingPivot, gameState, inputSystem,
                 projectileDataContainer, _data);
         }
@@ -38,7 +38,7 @@ namespace WitchScaper.Core.Character
             _shootingController?.Update();
             
             
-            if (_gameState.EnemiesForQTE.Count == 0)
+            if (_gameState.EnemiesForQTE.Count == 0 || _gameState.CurrentState == GameState.State.QTE)
             {
                 return;
             }
@@ -47,12 +47,30 @@ namespace WitchScaper.Core.Character
 
             if (distance < 10f && Input.GetKeyDown(KeyCode.Space))
             {
-                _qteController.StartQTE().Subscribe(p => _lastProgress = p, () =>
+                Time.timeScale = 0f;
+                StartQTE(enemy, () =>
                 {
-                    Debug.LogError(
-                        $"QTE {(_lastProgress.Successful.HasValue && _lastProgress.Successful.Value ? "SUCCESS" : "FAILED")}");
-                }).AddTo(_disposable);
+                    Time.timeScale = 1f;
+                    _movementController.DashToEnemy(enemy);
+                }, () => Time.timeScale = 1f);
             }
+        }
+
+        private void StartQTE(EnemyController enemy, Action success, Action fail)
+        {
+            _qteController.StartQTE(enemy).Subscribe(p =>
+            {
+                _lastProgress = p;
+            }, () =>
+            {
+                if (_lastProgress?.Successful != null && _lastProgress.Successful.Value)
+                {
+                    success?.Invoke();
+                    return;
+                }
+                
+                fail?.Invoke();
+            }).AddTo(_disposable);
         }
 
         private EnemyController GetClosestEnemy(out float distance)
@@ -68,6 +86,7 @@ namespace WitchScaper.Core.Character
                 if (enemyDistance < minDistance)
                 {
                     closestEnemy = enemy;
+                    minDistance = enemyDistance;
                 }
             }
 

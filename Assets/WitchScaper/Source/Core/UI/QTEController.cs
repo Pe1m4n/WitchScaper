@@ -21,21 +21,17 @@ namespace WitchScaper.Core.UI
         [SerializeField] [Range(0.1f, 0.25f)] private float _successWidth;
         [SerializeField] private float _secondsToFill;
 
-        private readonly CompositeDisposable _disposable = new CompositeDisposable();
         private AmmoContainer _ammoContainer;
         private GameState _gameState;
-        private PlayerCharacterController _playerController;
-        private QTEProgress _lastProgress;
         
         [Inject]
         public void SetDependencies(AmmoContainer ammoContainer, GameState gameState, PlayerCharacterController playerController)
         {
             _ammoContainer = ammoContainer;
             _gameState = gameState;
-            _playerController = playerController;
         }
         
-        public IObservable<QTEProgress> StartQTE()
+        public IObservable<QTEProgress> StartQTE(EnemyController enemy)
         {
             return Observable.Create<QTEProgress>(o =>
             {
@@ -57,40 +53,41 @@ namespace WitchScaper.Core.UI
                 var currentTime = 0f;
                 Observable.EveryUpdate().Subscribe(u =>
                 {
-                    currentTime += Time.unscaledDeltaTime;
-                    var progress = currentTime / _secondsToFill;
-                    _progressImage.fillAmount = progress;
-                    var passedSuccess = progress > successStart + _successWidth;
-                    if (passedSuccess)
+                    void endQte(bool successful)
                     {
-                        progressContainer.Successful = false;
+                        progressContainer.Successful = successful;
                         o.OnNext(progressContainer);
                         o.OnCompleted();
                         gameObject.SetActive(false);
                         _ammoContainer.gameObject.SetActive(true);
-                        _gameState.CurrentState = GameState.State.Battle;
+                        _gameState.CurrentState = GameState.State.Battle; 
+                    }
+                    
+                    if (!enemy.Turned)
+                    {
+                        o.OnCompleted();
+                        return;
+                    }
+                    
+                    currentTime += Time.unscaledDeltaTime;
+                    var progress = currentTime / _secondsToFill;
+                    _progressImage.fillAmount = progress;
+                    var passedSuccess = progress >= successStart + _successWidth;
+                    if (passedSuccess)
+                    {
+                        endQte(false);
                     }
 
                     var inSuccess = progress > successStart && !passedSuccess;
                     
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        progressContainer.Successful = inSuccess;
-                        o.OnNext(progressContainer);
-                        o.OnCompleted();
-                        gameObject.SetActive(false);
-                        _ammoContainer.gameObject.SetActive(true);
-                        _gameState.CurrentState = GameState.State.Battle;
+                        endQte(inSuccess);
                     }
 
                     if (progress > 1f)
                     {
-                        progressContainer.Successful = false;
-                        o.OnNext(progressContainer);
-                        o.OnCompleted();
-                        gameObject.SetActive(false);
-                        _ammoContainer.gameObject.SetActive(true);
-                        _gameState.CurrentState = GameState.State.Battle;
+                        endQte(false);
                     }
                     
                 }).AddTo(disposable);
@@ -102,7 +99,24 @@ namespace WitchScaper.Core.UI
         private int GetSuccessZone(out float successStart)
         {
             var zone = Random.Range(0, 4);
-            successStart = (zone + 1) * 0.25f;
+            switch (zone)
+            {
+                case 0: //Bottom
+                    successStart = 0f;
+                    break;
+                case 1: //Right
+                    successStart = 0.75f;
+                    break;
+                case 2: //Top
+                    successStart = 0.5f;
+                    break;
+                case 3: //Left
+                    successStart = 0.25f;
+                    break;
+                default:
+                    successStart = 0f;
+                    break;
+            }
             
             return zone;
         }

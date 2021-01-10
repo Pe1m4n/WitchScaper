@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 using Pathfinding;
 using UniRx;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace WitchScaper.Core.Character
         [SerializeField] private AIDestinationSetter _destinationSetter;
 
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
-        private bool _turned;
+        public bool Turned { get; private set; }
         private bool _aggroed;
         private GameState _gameState;
         
@@ -39,7 +40,7 @@ namespace WitchScaper.Core.Character
                 return;
             }
             
-            if (!_turned && projectileData.ProjectileType == ProjectileData.Type.Hex)
+            if (!Turned && projectileData.ProjectileType == ProjectileData.Type.Hex)
             {
                 Turn(true);
             }
@@ -47,9 +48,9 @@ namespace WitchScaper.Core.Character
 
         public void Turn(bool isTurned)
         {
-            if (isTurned == _turned) return;
+            if (isTurned == Turned) return;
             
-            _turned = isTurned;
+            Turned = isTurned;
             _mainLayer.SetActive(!isTurned);
             _turnedLayer.SetActive(isTurned);
             _aiPath.canMove = !isTurned;
@@ -66,6 +67,12 @@ namespace WitchScaper.Core.Character
             }
         }
 
+        public void Kill()
+        {
+            _gameState.EnemiesForQTE.Remove(this);
+            Destroy(gameObject);
+        }
+        
         private void Update()
         {
             if (_aggroed)
