@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using WitchScaper.Common;
 using WitchScaper.Core.State;
 
@@ -58,6 +59,7 @@ namespace WitchScaper.Core.Character
             var rotation = Quaternion.FromToRotation(_shootingPivot.transform.position, mousePos);
 
             var indexToShoot = (int) (_state.PlayerState.LoadProgress / 0.33f);
+            indexToShoot = Mathf.Clamp(indexToShoot, 0, 2);
             var projectileData = _projectileDataContainer.GetDataForColor(_state.PlayerState.Ammo[indexToShoot]);
             _state.PlayerState.UseAmmo(indexToShoot);
             
