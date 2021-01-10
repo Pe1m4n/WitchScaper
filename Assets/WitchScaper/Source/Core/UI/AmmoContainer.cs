@@ -40,7 +40,10 @@ namespace WitchScaper.Core.UI
                     }).AddTo(_disposable);
 
             state.Select(s => s.PlayerState.LoadProgress)
-                .Subscribe(v => _loadProgressbar.fillAmount = Mathf.Clamp01(v)).AddTo(_disposable);
+                .Subscribe(v =>
+                {
+                    SetLoadProgress(Mathf.Clamp01(v));
+                }).AddTo(_disposable);
         }
         
         public void SetColors(List<ColorType> colorTypes)
@@ -54,6 +57,19 @@ namespace WitchScaper.Core.UI
         public void SetLoadProgress(float progress)
         {
             _loadProgressbar.fillAmount = progress;
+            if (progress <= 0f)
+            {
+                _slots.ForEach(s => s.SetEnabled(true));
+                return;
+            }
+            
+            var indexToShoot = (int) (progress / 0.33f);
+            indexToShoot = Mathf.Clamp(indexToShoot, 0, 2);
+
+            for (int i = 0; i < _slots.Count; i++)
+            {
+                _slots[i].SetEnabled(indexToShoot == i);
+            }
         }
 
         private void OnDestroy()
