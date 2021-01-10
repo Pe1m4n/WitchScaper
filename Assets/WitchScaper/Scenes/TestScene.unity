@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2823,7 +2823,7 @@ MonoBehaviour:
   _qteController: {fileID: 8098542335347657059}
   _playerCharacterController: {fileID: 2082605095}
   _healthContainer: {fileID: 1416526786}
-  _audioManager: {fileID: 0}
+  _audioManager: {fileID: 1921161285}
 --- !u!114 &2014263012
 MonoBehaviour:
   m_ObjectHideFlags: 0
