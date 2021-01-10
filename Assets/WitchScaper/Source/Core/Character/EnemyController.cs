@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Security.Cryptography;
 using Pathfinding;
 using UniRx;
 using UnityEngine;
+using WitchScaper.Core.State;
+using WitchScaper.Core.UI;
 using Zenject;
 
 namespace WitchScaper.Core.Character
@@ -15,13 +18,14 @@ namespace WitchScaper.Core.Character
         [SerializeField] private AIDestinationSetter _destinationSetter;
 
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
-        private bool _turned;
+        public bool Turned { get; private set; }
         private bool _aggroed;
+        private GameState _gameState;
         
         [Inject]
-        public void SetDependencies()
+        public void SetDependencies(GameState gameState)
         {
-            
+            _gameState = gameState;
         }
 
         private void Awake()
@@ -36,33 +40,39 @@ namespace WitchScaper.Core.Character
                 return;
             }
             
-            if (!_turned && projectileData.ProjectileType == ProjectileData.Type.Hex)
+            if (!Turned && projectileData.ProjectileType == ProjectileData.Type.Hex)
             {
                 Turn(true);
             }
-            
-            if (_turned && projectileData.ProjectileType == ProjectileData.Type.Damage)
-            {
-                Destroy(gameObject);
-            }
         }
 
-        private void Turn(bool isTurned)
+        public void Turn(bool isTurned)
         {
-            if (isTurned == _turned) return;
+            if (isTurned == Turned) return;
             
-            _turned = isTurned;
+            Turned = isTurned;
             _mainLayer.SetActive(!isTurned);
             _turnedLayer.SetActive(isTurned);
             _aiPath.canMove = !isTurned;
             
             if (isTurned)
             {
+                _gameState.EnemiesForQTE.Add(this);
                 Observable.Timer(TimeSpan.FromSeconds(_data.TurnedTimeSeconds)).Subscribe(o => Turn(false))
                     .AddTo(_disposable);
             }
+            else
+            {
+                _gameState.EnemiesForQTE.Remove(this);   
+            }
         }
 
+        public void Kill()
+        {
+            _gameState.EnemiesForQTE.Remove(this);
+            Destroy(gameObject);
+        }
+        
         private void Update()
         {
             if (_aggroed)

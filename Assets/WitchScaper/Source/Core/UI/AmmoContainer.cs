@@ -20,7 +20,7 @@ namespace WitchScaper.Core.UI
         public void SubscribeTo(IObservable<GameState> state)
         {
             List<ColorType> lastColorTypes = new List<ColorType>();
-            state.Select(s => Type == ProjectileData.Type.Hex ? s.PlayerState.HexAmmo : s.PlayerState.DamageAmmo)
+            state.Select(s => s.PlayerState.Ammo)
                 .Subscribe(l =>
                 {
                     if (lastColorTypes != null && l.SequenceEqual(lastColorTypes))
@@ -33,10 +33,8 @@ namespace WitchScaper.Core.UI
                     lastColorTypes.AddRange(l);
                 }).AddTo(_disposable);
 
-            state.Select(s =>
-                    Type == ProjectileData.Type.Hex ? s.PlayerState.TimeToReloadHex : s.PlayerState.TimeToReloadAmmo)
-                .Subscribe(
-                    v =>
+            state.Select(s => s.PlayerState.TimeToReload)
+                .Subscribe(v =>
                     {
                         _reloadMask.fillAmount = Mathf.Clamp01(v);
                     }).AddTo(_disposable);

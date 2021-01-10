@@ -15,10 +15,10 @@ namespace WitchScaper.Core.Character
             _projectileDatas = projectileDatas;
         }
 
-        public ProjectileData GetDataForColor(ColorType colorType, bool isHex)
+        public ProjectileData GetDataForColor(ColorType colorType)
         {
-            return _projectileDatas.FirstOrDefault(d =>
-                d.ProjectileColor == colorType && d.ProjectileType == ProjectileData.Type.Hex == isHex);
+            return _projectileDatas.FirstOrDefault(d => d != null && 
+                d.ProjectileColor == colorType);
         }
     }
 }

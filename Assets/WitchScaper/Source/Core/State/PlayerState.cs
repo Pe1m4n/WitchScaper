@@ -1,25 +1,25 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using WitchScaper.Common;
 using WitchScaper.Core.Character;
+using WitchScaper.Core.UI;
 
 namespace WitchScaper.Core.State
 {
     public class PlayerState
     {
-        public List<ColorType> HexAmmo = new List<ColorType>() {ColorType.Green, ColorType.Blue, ColorType.Red};
-        public List<ColorType> DamageAmmo = new List<ColorType>() {ColorType.Green, ColorType.Blue, ColorType.Red};
-
-        public float TimeToReloadHex;
-        public float TimeToReloadAmmo;
+        public readonly List<ColorType> Ammo = new List<ColorType>() {ColorType.Green, ColorType.Blue, ColorType.Red};
+        public float TimeToReload;
     }
 
     public static class PlayerStateExtensions
     {
-        public static void UseAmmo(this PlayerState state, bool isDamage, int index)
+        public static void UseAmmo(this PlayerState state, int index)
         {
-            var container = isDamage ? state.DamageAmmo : state.HexAmmo;
-            container.RemoveAt(index);
-            container.Add(ColorTypeHelper.AllTypes[Random.Range(0, ColorTypeHelper.AllTypes.Count)]);
+            var newMagazine = new List<ColorType>(ColorTypeHelper.AllTypes);
+            newMagazine.Shuffle();
+            state.Ammo.Clear();
+            state.Ammo.AddRange(newMagazine);
         }
     }
 }
