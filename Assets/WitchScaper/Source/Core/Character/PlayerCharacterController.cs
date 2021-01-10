@@ -14,6 +14,7 @@ namespace WitchScaper.Core.Character
         [SerializeField] private CharacterControllerData _data;
         [SerializeField] private Transform _shootingPivot;
         [SerializeField] private Animator _animator;
+        [SerializeField] private Transform _arm;
         
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
         private MovementController _movementController;
@@ -32,7 +33,7 @@ namespace WitchScaper.Core.Character
             _animationController = new AnimationController(_animator);
             _movementController = new MovementController(GetComponent<Rigidbody2D>(), _data, gameState, transform, _animationController);
             _shootingController = new ShootingController(projectileFactory, _shootingPivot, gameState, inputSystem,
-                projectileDataContainer, _data, transform);
+                projectileDataContainer, _data, transform, _arm);
         }
 
         private void Update()

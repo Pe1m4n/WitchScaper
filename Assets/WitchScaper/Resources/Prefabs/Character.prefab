@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3292825113960954114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2694671122323056357}
+  m_Layer: 8
+  m_Name: Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2694671122323056357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3292825113960954114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.044, y: 0.453, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7699669022132067172}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4543939033286226717
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,13 +54,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4543939033286226717}
-  m_LocalRotation: {x: -0, y: -0, z: -0.3944311, w: 0.9189255}
-  m_LocalPosition: {x: 0.007, y: -0.189, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.68766165, w: 0.72603136}
+  m_LocalPosition: {x: 0.033, y: -0.185, z: -0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2694671122323056357}
   m_Father: {fileID: 7354472008492816179}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -46.461002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -86.89101}
 --- !u!212 &2753593260095441720
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -70,15 +101,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 04a3237c045f0224192e3f2c18a19636, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 178e6ad2b6f967b42bffcfdeea2cda13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.125, y: 1.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7354472008492816181
@@ -201,8 +232,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: caa6fd6b095e3654b8c916fe9564a680, type: 2}
-  _shootingPivot: {fileID: 7354472008492816179}
+  _shootingPivot: {fileID: 2694671122323056357}
   _animator: {fileID: 5925653127824707145}
+  _arm: {fileID: 7699669022132067172}
 --- !u!61 &7354472008492816190
 BoxCollider2D:
   m_ObjectHideFlags: 0
