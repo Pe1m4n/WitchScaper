@@ -17,6 +17,7 @@ namespace WitchScaper.Installers
         [SerializeField] private AmmoContainer _ammoContainer;
         [SerializeField] private QTEController _qteController;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
+        [SerializeField] private HealthContainer _healthContainer;
         
         public override void InstallBindings()
         {
@@ -31,6 +32,7 @@ namespace WitchScaper.Installers
             Container.Bind<QTEController>().FromInstance(_qteController).AsSingle();
             Container.Bind<PlayerCharacterController>().FromInstance(_playerCharacterController).AsSingle();
             Container.BindInterfacesTo<CameraArmSpring>().AsSingle().NonLazy();
+            Container.Bind<HealthContainer>().FromInstance(_healthContainer).AsSingle();
         }
     }
 }

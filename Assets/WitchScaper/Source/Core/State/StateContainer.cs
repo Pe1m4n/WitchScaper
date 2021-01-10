@@ -11,7 +11,7 @@ namespace WitchScaper.Core.State
         private readonly GameState _state;
         private readonly ReactiveProperty<GameState> _reactiveState;
 
-        public StateContainer(GameState state, IEnumerable<IStateObserver> observers)
+        public StateContainer(GameState state, IEnumerable<IStateObserver> observers, HealthContainer healthContainer)
         {
             _state = state;
             _reactiveState = new ReactiveProperty<GameState>(_state);
@@ -19,6 +19,8 @@ namespace WitchScaper.Core.State
             {
                 stateObserver.SubscribeTo(_reactiveState);
             }
+
+            healthContainer.SubscribeTo(_reactiveState);
         }
 
         public void Dispose()
