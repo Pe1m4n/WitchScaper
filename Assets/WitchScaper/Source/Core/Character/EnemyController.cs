@@ -31,9 +31,8 @@ namespace WitchScaper.Core.Character
         {
             var target = _playerCharacterController.transform.position;
             target.z = transform.position.z;
-            
-            _agent.SetDestination(target);
-            //_aiPath.maxSpeed = _data.Speed; TODO: AI
+
+            _agent.speed = _data.Speed;
         }
 
         public void OnHit(ProjectileData projectileData)
@@ -56,7 +55,6 @@ namespace WitchScaper.Core.Character
             Turned = isTurned;
             _mainLayer.SetActive(!isTurned);
             _turnedLayer.SetActive(isTurned);
-            //_aiPath.canMove = !isTurned; //TODO: AI
             
             if (isTurned)
             {
@@ -80,17 +78,16 @@ namespace WitchScaper.Core.Character
         {
             if (_aggroed)
             {
+                _agent.SetDestination(_playerCharacterController.transform.position);
+                _agent.isStopped = Turned;
                 return;
             }
             
-            //TODO:AI
-            // var distance = (_destinationSetter.target.position - transform.position).magnitude;
-            // if (distance <= _data.AggroRadius)
-            // {
-            //     _aiPath.canMove = true;
-            //     _aiPath.canSearch = true;
-            //     _aggroed = true;
-            // }
+            var distance = (_playerCharacterController.transform.position - transform.position).magnitude;
+            if (distance <= _data.AggroRadius)
+            {
+                _aggroed = true;
+            }
         }
 
         private void OnDestroy()
