@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Security.Cryptography;
-using Pathfinding;
 using UniRx;
 using UnityEngine;
+using UnityEngine.AI;
 using WitchScaper.Core.State;
-using WitchScaper.Core.UI;
 using Zenject;
 
 namespace WitchScaper.Core.Character
@@ -14,23 +12,27 @@ namespace WitchScaper.Core.Character
         [SerializeField] private EnemyData _data;
         [SerializeField] private GameObject _mainLayer;
         [SerializeField] private GameObject _turnedLayer;
-        [SerializeField] private AIPath _aiPath;
-        [SerializeField] private AIDestinationSetter _destinationSetter;
+        [SerializeField] private NavMeshAgent _agent;
 
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
         public bool Turned { get; private set; }
         private bool _aggroed;
         private GameState _gameState;
+        private PlayerCharacterController _playerCharacterController;
         
         [Inject]
-        public void SetDependencies(GameState gameState)
+        public void SetDependencies(GameState gameState, PlayerCharacterController playerCharacterController)
         {
             _gameState = gameState;
+            _playerCharacterController = playerCharacterController;
         }
 
         private void Awake()
         {
-            _aiPath.maxSpeed = _data.Speed;
+            var target = _playerCharacterController.transform.position;
+            target.z = transform.position.z;
+
+            _agent.speed = _data.Speed;
         }
 
         public void OnHit(ProjectileData projectileData)
@@ -53,7 +55,6 @@ namespace WitchScaper.Core.Character
             Turned = isTurned;
             _mainLayer.SetActive(!isTurned);
             _turnedLayer.SetActive(isTurned);
-            _aiPath.canMove = !isTurned;
             
             if (isTurned)
             {
@@ -77,14 +78,14 @@ namespace WitchScaper.Core.Character
         {
             if (_aggroed)
             {
+                _agent.SetDestination(_playerCharacterController.transform.position);
+                _agent.isStopped = Turned;
                 return;
             }
             
-            var distance = (_destinationSetter.target.position - transform.position).magnitude;
+            var distance = (_playerCharacterController.transform.position - transform.position).magnitude;
             if (distance <= _data.AggroRadius)
             {
-                _aiPath.canMove = true;
-                _aiPath.canSearch = true;
                 _aggroed = true;
             }
         }

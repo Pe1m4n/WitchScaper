@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using WitchScaper.Common;
 using WitchScaper.Core.Character;
-using WitchScaper.Core.UI;
 
 namespace WitchScaper.Core.State
 {
@@ -11,6 +9,7 @@ namespace WitchScaper.Core.State
         public readonly List<ColorType> Ammo = new List<ColorType>() {ColorType.Green, ColorType.Blue, ColorType.Red};
         public float TimeToReload;
         public float LoadProgress;
+        public int HP;
     }
 
     public static class PlayerStateExtensions
