@@ -53,7 +53,7 @@ namespace WitchScaper.Core.Character
         private IObservable<Unit> DashAsObservable(float dashTime, Vector2 startPos, Vector2 endPos)
         {
             return Observable.Create<Unit>(o =>
-            {
+            { 
                 var currentTime = 0f;
                 var disposable = new CompositeDisposable();
 

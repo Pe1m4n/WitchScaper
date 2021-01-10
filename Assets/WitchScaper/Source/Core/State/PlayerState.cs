@@ -10,6 +10,7 @@ namespace WitchScaper.Core.State
     {
         public readonly List<ColorType> Ammo = new List<ColorType>() {ColorType.Green, ColorType.Blue, ColorType.Red};
         public float TimeToReload;
+        public float LoadProgress;
     }
 
     public static class PlayerStateExtensions
