@@ -3750,7 +3750,8 @@ PlayableDirector:
   - key: {fileID: -6649157187622535813, guid: 751819b71b5d4ab458838778c0895eaf, type: 2}
     value: {fileID: 319118974}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 35cd1cbd1e006f3418d467a006043bc0: {fileID: 1517403025}
 --- !u!4 &1822633286
 Transform:
   m_ObjectHideFlags: 0
@@ -4025,6 +4026,7 @@ MonoBehaviour:
   _ammoContainer: {fileID: 0}
   _qteController: {fileID: 0}
   _playerCharacterController: {fileID: 0}
+  _healthContainer: {fileID: 0}
 --- !u!114 &2014263012
 MonoBehaviour:
   m_ObjectHideFlags: 0
