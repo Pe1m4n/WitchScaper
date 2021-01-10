@@ -712,6 +712,66 @@ PrefabInstance:
       propertyPath: Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: redColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: redColor.b
+      value: 0.24666645
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: redColor.g
+      value: 0.064836234
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: redColor.r
+      value: 0.2924528
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: blueColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: blueColor.b
+      value: 0.22027414
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: blueColor.g
+      value: 0.4323802
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: blueColor.r
+      value: 0.8490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: greenColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: greenColor.b
+      value: 0.11774654
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: greenColor.g
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 4044764474056206021, guid: 2b0b92f57d07a574e950abb4886175e9,
+        type: 3}
+      propertyPath: greenColor.r
+      value: 0.1297591
+      objectReference: {fileID: 0}
     - target: {fileID: 4044764474056206023, guid: 2b0b92f57d07a574e950abb4886175e9,
         type: 3}
       propertyPath: m_Pivot.x

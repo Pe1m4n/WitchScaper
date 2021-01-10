@@ -14,6 +14,10 @@ namespace WitchScaper.Core.UI
         [SerializeField] private List<AmmoSlot> _slots;
         [SerializeField] private Image _reloadMask;
         [SerializeField] private Image _loadProgressbar;
+
+        [SerializeField] private Color redColor;
+        [SerializeField] private Color greenColor;
+        [SerializeField] private Color blueColor;
         
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
 
@@ -50,7 +54,20 @@ namespace WitchScaper.Core.UI
         {
             for (int i = 0; i < colorTypes.Count; i++)
             {
-                _slots[i].SetColor(colorTypes[i]);
+                Color color = default;
+                switch (colorTypes[i])
+                {
+                    case ColorType.Green:
+                        color = greenColor;
+                        break;
+                    case ColorType.Red:
+                        color = redColor;
+                        break;
+                    case ColorType.Blue:
+                        color = blueColor;
+                        break;
+                }   
+                _slots[i].SetColor(color);
             }
         }
 

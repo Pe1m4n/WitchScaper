@@ -73,10 +73,6 @@ namespace WitchScaper.Core.UI
                     var progress = currentTime / _secondsToFill;
                     _progressImage.fillAmount = progress;
                     var passedSuccess = progress >= successStart + _successWidth;
-                    if (passedSuccess)
-                    {
-                        endQte(false);
-                    }
 
                     var inSuccess = progress > successStart && !passedSuccess;
                     
@@ -103,7 +99,7 @@ namespace WitchScaper.Core.UI
             {
                 case 0: //Bottom
                     zone = 2;
-                    successStart = 0.25f;
+                    successStart = 0.5f;
                     break;
                 case 1: //Right
                     successStart = 0.75f;
@@ -113,11 +109,11 @@ namespace WitchScaper.Core.UI
                     break;
                 case 3: //Left
                     zone = 2;
-                    successStart = 0.25f;
+                    successStart = 0.5f;
                     break;
                 default:
                     zone = 2;
-                    successStart = 0.25f;
+                    successStart = 0.5f;
                     break;
             }
             
