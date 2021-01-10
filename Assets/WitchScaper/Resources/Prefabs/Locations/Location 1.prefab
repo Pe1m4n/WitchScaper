@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 6466569847554461626}
   - component: {fileID: 4000772418036874154}
   - component: {fileID: 7857058292383970601}
+  - component: {fileID: 4244845702862078312}
   m_Layer: 0
   m_Name: Candle (16)
   m_TagString: Untagged
@@ -426,6 +427,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &4244845702862078312
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152310897959607933}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1411964076523082545
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,6 +652,7 @@ GameObject:
   - component: {fileID: 501174465783948888}
   - component: {fileID: 5610236900549400400}
   - component: {fileID: 5465969631092324113}
+  - component: {fileID: 6154802058104956245}
   m_Layer: 0
   m_Name: Candle (9)
   m_TagString: Untagged
@@ -744,6 +765,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &6154802058104956245
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685808082369016397}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1687141825231491583
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +878,7 @@ GameObject:
   - component: {fileID: 1550928775866126716}
   - component: {fileID: 1221513877570723554}
   - component: {fileID: 8955546911970487247}
+  - component: {fileID: 380421795963292832}
   m_Layer: 0
   m_Name: Candle (15)
   m_TagString: Untagged
@@ -950,6 +991,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &380421795963292832
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001249401998491597}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2095019589683570549
 GameObject:
   m_ObjectHideFlags: 0
@@ -961,6 +1021,7 @@ GameObject:
   - component: {fileID: 6114003733496526668}
   - component: {fileID: 1722422954036404811}
   - component: {fileID: 4124212493274664718}
+  - component: {fileID: 1447089651660857634}
   m_Layer: 0
   m_Name: Candle (13)
   m_TagString: Untagged
@@ -1073,6 +1134,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &1447089651660857634
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095019589683570549}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2097617409371699676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,6 +1443,7 @@ GameObject:
   - component: {fileID: 5304298605025902835}
   - component: {fileID: 7764293549954831364}
   - component: {fileID: 1187097741895313978}
+  - component: {fileID: 7214519454108402723}
   m_Layer: 0
   m_Name: Candle (11)
   m_TagString: Untagged
@@ -1475,6 +1556,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &7214519454108402723
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2432984610452168675}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2573358915281211691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,6 +1667,7 @@ GameObject:
   - component: {fileID: 72318000654955813}
   - component: {fileID: 5841027557097989742}
   - component: {fileID: 5661313603598916148}
+  - component: {fileID: 8623569364850728468}
   m_Layer: 0
   m_Name: Candle (17)
   m_TagString: Untagged
@@ -1679,6 +1780,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &8623569364850728468
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610614441764774576}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2904244517261364440
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +2005,7 @@ GameObject:
   - component: {fileID: 2353742675590834023}
   - component: {fileID: 1395346086631266241}
   - component: {fileID: 8100776407379523567}
+  - component: {fileID: 3498376146876274346}
   m_Layer: 0
   m_Name: Candle (6)
   m_TagString: Untagged
@@ -1997,6 +2118,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &3498376146876274346
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3387663344789680950}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3687596541433446123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,6 +2315,7 @@ GameObject:
   - component: {fileID: 4035884133088650491}
   - component: {fileID: 5276856704792969069}
   - component: {fileID: 1839643226475253086}
+  - component: {fileID: 7740513927172147258}
   m_Layer: 0
   m_Name: Candle (10)
   m_TagString: Untagged
@@ -2287,6 +2428,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &7740513927172147258
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171286650330901721}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4293249360768797093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2575,6 +2735,7 @@ GameObject:
   - component: {fileID: 5807612405211134069}
   - component: {fileID: 7512417605591663743}
   - component: {fileID: 3934218293104998466}
+  - component: {fileID: 8249241488351628878}
   m_Layer: 0
   m_Name: Candle (8)
   m_TagString: Untagged
@@ -2687,6 +2848,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &8249241488351628878
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5681408359672768386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5760947971844391052
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,6 +3325,7 @@ GameObject:
   - component: {fileID: 2966072354680895761}
   - component: {fileID: 4029999600756050947}
   - component: {fileID: 8591583919072521097}
+  - component: {fileID: 1349923479145623733}
   m_Layer: 0
   m_Name: Candle (12)
   m_TagString: Untagged
@@ -3257,6 +3438,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &1349923479145623733
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643856642026774694}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6747161922050751802
 GameObject:
   m_ObjectHideFlags: 0
@@ -3268,6 +3468,7 @@ GameObject:
   - component: {fileID: 8653386316591011346}
   - component: {fileID: 2929834101093920021}
   - component: {fileID: 7708641156257993355}
+  - component: {fileID: 1938118619501582123}
   m_Layer: 0
   m_Name: Candle (7)
   m_TagString: Untagged
@@ -3380,6 +3581,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &1938118619501582123
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747161922050751802}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7279991529157425115
 GameObject:
   m_ObjectHideFlags: 0
@@ -3773,6 +3993,7 @@ GameObject:
   - component: {fileID: 7811972923789588721}
   - component: {fileID: 7811972923789588726}
   - component: {fileID: 722512960759036257}
+  - component: {fileID: 2932922318477612393}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Untagged
@@ -3885,6 +4106,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &2932922318477612393
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7811972923789588720}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7811972923942187415
 GameObject:
   m_ObjectHideFlags: 0
@@ -3896,6 +4136,7 @@ GameObject:
   - component: {fileID: 7811972923942187412}
   - component: {fileID: 7811972923942187413}
   - component: {fileID: 980965560279222060}
+  - component: {fileID: 4434054001640914376}
   m_Layer: 0
   m_Name: Candle (3)
   m_TagString: Untagged
@@ -4008,6 +4249,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &4434054001640914376
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7811972923942187415}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7811972923952589093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4019,6 +4279,7 @@ GameObject:
   - component: {fileID: 7811972923952589098}
   - component: {fileID: 7811972923952589099}
   - component: {fileID: 5086227719332376765}
+  - component: {fileID: 5106285591530536323}
   m_Layer: 0
   m_Name: Candle (1)
   m_TagString: Untagged
@@ -4131,6 +4392,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &5106285591530536323
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7811972923952589093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7811972924159017075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4142,6 +4422,7 @@ GameObject:
   - component: {fileID: 7811972924159017072}
   - component: {fileID: 7811972924159017073}
   - component: {fileID: 1457872638954731495}
+  - component: {fileID: 4787563872941229504}
   m_Layer: 0
   m_Name: Candle (2)
   m_TagString: Untagged
@@ -4254,6 +4535,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &4787563872941229504
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7811972924159017075}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7811972924286331772
 GameObject:
   m_ObjectHideFlags: 0
@@ -11177,6 +11477,7 @@ GameObject:
   - component: {fileID: 7811972925092318634}
   - component: {fileID: 7811972925092318635}
   - component: {fileID: 187525082437542378}
+  - component: {fileID: 8556684689733755313}
   m_Layer: 0
   m_Name: Candle (4)
   m_TagString: Untagged
@@ -11289,6 +11590,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &8556684689733755313
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7811972925092318629}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7811972925277842513
 GameObject:
   m_ObjectHideFlags: 0
@@ -11300,6 +11620,7 @@ GameObject:
   - component: {fileID: 7811972925277842518}
   - component: {fileID: 7811972925277842519}
   - component: {fileID: 4676312507896978148}
+  - component: {fileID: 2309293728608678237}
   m_Layer: 0
   m_Name: Candle (5)
   m_TagString: Untagged
@@ -11412,6 +11733,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &2309293728608678237
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7811972925277842513}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7811972925521607387
 GameObject:
   m_ObjectHideFlags: 0
@@ -11505,6 +11845,7 @@ GameObject:
   - component: {fileID: 4775297816915639252}
   - component: {fileID: 2632932030895649287}
   - component: {fileID: 8343736209520394483}
+  - component: {fileID: 5203869968355866369}
   m_Layer: 0
   m_Name: Candle (14)
   m_TagString: Untagged
@@ -11617,6 +11958,25 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &5203869968355866369
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7868358299113223875}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8af56053a38915043b1b377c4d26c39e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7972919274974100064
 GameObject:
   m_ObjectHideFlags: 0
