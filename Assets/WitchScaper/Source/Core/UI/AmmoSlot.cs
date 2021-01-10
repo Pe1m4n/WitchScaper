@@ -16,22 +16,9 @@ namespace WitchScaper.Core.UI
             _notActiveShield.SetActive(!state);
         }
         
-        public void SetColor(ColorType colorType)
+        public void SetColor(Color color)
         {
-            switch (colorType)
-            {
-                case ColorType.Green:
-                    _image.color = Color.green;
-                    break;
-                case ColorType.Red:
-                    _image.color = Color.red;
-                    break;
-                case ColorType.Blue:
-                    _image.color = Color.blue;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(colorType), colorType, null);
-            }   
+            _image.color = color;
         }
     }
 }
