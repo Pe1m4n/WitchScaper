@@ -11,16 +11,19 @@ namespace WitchScaper.Core.Character
         private readonly CharacterControllerData _controllerData;
         private readonly GameState _state;
         private readonly Transform _transform;
+        private readonly AnimationController _animationController;
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
 
         private Vector2 _movement;
 
-        public MovementController(Rigidbody2D rigidbody2D, CharacterControllerData controllerData, GameState state, Transform transform)
+        public MovementController(Rigidbody2D rigidbody2D, CharacterControllerData controllerData,
+            GameState state, Transform transform, AnimationController animationController)
         {
             _rigidbody2D = rigidbody2D;
             _controllerData = controllerData;
             _state = state;
             _transform = transform;
+            _animationController = animationController;
         }
 
         public void Update()
@@ -37,6 +40,7 @@ namespace WitchScaper.Core.Character
             }
             
             _rigidbody2D.MovePosition(_rigidbody2D.position + _movement * (_controllerData.Speed * Time.fixedDeltaTime));
+            _animationController.SetState(_movement.magnitude <= 0.01? AnimationController.State.Idle :AnimationController.State.Moving);
         }
         
         public void DashToEnemy(EnemyController enemy)
