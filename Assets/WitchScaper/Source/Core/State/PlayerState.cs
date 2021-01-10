@@ -10,6 +10,7 @@ namespace WitchScaper.Core.State
         public float TimeToReload;
         public float LoadProgress;
         public int HP;
+        public bool Invulnerable;
     }
 
     public static class PlayerStateExtensions

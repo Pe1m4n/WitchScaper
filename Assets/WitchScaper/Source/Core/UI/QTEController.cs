@@ -102,6 +102,7 @@ namespace WitchScaper.Core.UI
             switch (zone)
             {
                 case 0: //Bottom
+                    zone = 2;
                     successStart = 0.25f;
                     break;
                 case 1: //Right
@@ -111,9 +112,11 @@ namespace WitchScaper.Core.UI
                     successStart = 0.5f;
                     break;
                 case 3: //Left
+                    zone = 2;
                     successStart = 0.25f;
                     break;
                 default:
+                    zone = 2;
                     successStart = 0.25f;
                     break;
             }

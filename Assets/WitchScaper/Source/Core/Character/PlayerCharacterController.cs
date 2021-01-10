@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using UniRx;
 using UnityEngine;
 using WitchScaper.Common;
@@ -23,15 +24,19 @@ namespace WitchScaper.Core.Character
         private QTEController.QTEProgress _lastProgress;
         private GameState _gameState;
         private QTEController _qteController;
+        private SpriteRenderer _spriteRenderer;
+        private Rigidbody2D _rigidBody2d;
 
         [Inject]
         public void SetDependencies(GameState gameState, ProjectileFactory projectileFactory,
             IInputSystem inputSystem, ProjectileDataContainer projectileDataContainer, QTEController qteController)
         {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             _gameState = gameState;
             _qteController = qteController;
+            _rigidBody2d = GetComponent<Rigidbody2D>();
             _animationController = new AnimationController(_animator);
-            _movementController = new MovementController(GetComponent<Rigidbody2D>(), _data, gameState, transform, _animationController);
+            _movementController = new MovementController(_rigidBody2d, _data, gameState, transform, _animationController);
             _shootingController = new ShootingController(projectileFactory, _shootingPivot, gameState, inputSystem,
                 projectileDataContainer, _data, transform, _arm);
         }
@@ -58,6 +63,17 @@ namespace WitchScaper.Core.Character
                     _movementController.DashToEnemy(enemy);
                 }, () => Time.timeScale = 1f);
             }
+        }
+
+        public void Hit(Vector2 direction)
+        {
+            if (_gameState.PlayerState.Invulnerable)
+            {
+                return;
+            }
+
+            _gameState.PlayerState.Invulnerable = true;
+            _spriteRenderer.DOColor(Color.red, 0.1f).SetLoops(10, LoopType.Yoyo).OnComplete(() => _gameState.PlayerState.Invulnerable = false);
         }
 
         private void StartQTE(EnemyController enemy, Action success, Action fail)

@@ -16,6 +16,8 @@ namespace WitchScaper.Core.Character
 
         private Vector2 _movement;
 
+        private Vector2 _impulse;
+
         public MovementController(Rigidbody2D rigidbody2D, CharacterControllerData controllerData,
             GameState state, Transform transform, AnimationController animationController)
         {
@@ -32,24 +34,31 @@ namespace WitchScaper.Core.Character
             _movement.y = Input.GetAxisRaw("Vertical");
         }
 
+        public void SetImpulse(Vector2 impulse, float force)
+        {
+            _impulse = impulse;
+        }
+
         public void ApplyMovement()
         {
             if (_state.CurrentState != GameState.State.Battle)
             {
                 return;
             }
-            
+
+            if (_movement == Vector2.zero)
+            {
+                _animationController.SetState(AnimationController.State.Idle);
+                return;
+            }
             _rigidbody2D.MovePosition(_rigidbody2D.position + _movement * (_controllerData.Speed * Time.fixedDeltaTime));
             _animationController.SetState(_movement.magnitude <= 0.01? AnimationController.State.Idle :AnimationController.State.Moving);
         }
         
         public void DashToEnemy(EnemyController enemy)
         {
-            var direction = new Vector2(enemy.transform.position.x, enemy.transform.position.y) - _rigidbody2D.position;
-
             const float dashTime = 0.2f;
 
-            var currentTime = 0f;
             var startPosition = _rigidbody2D.position;
             DashAsObservable(dashTime, startPosition, enemy.transform.position).Subscribe(o => { }, enemy.Kill).AddTo(_disposable).AddTo(_disposable);
         }
@@ -57,7 +66,8 @@ namespace WitchScaper.Core.Character
         private IObservable<Unit> DashAsObservable(float dashTime, Vector2 startPos, Vector2 endPos)
         {
             return Observable.Create<Unit>(o =>
-            { 
+            {
+                _state.PlayerState.Invulnerable = true;
                 var currentTime = 0f;
                 var disposable = new CompositeDisposable();
 
@@ -69,6 +79,7 @@ namespace WitchScaper.Core.Character
                     o.OnNext(Unit.Default);
                     if (currentTime >= dashTime)
                     {
+                        _state.PlayerState.Invulnerable = false;
                         o.OnCompleted();
                     }
                 }).AddTo(disposable);

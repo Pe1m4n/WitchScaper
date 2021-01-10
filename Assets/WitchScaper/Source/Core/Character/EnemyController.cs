@@ -76,14 +76,20 @@ namespace WitchScaper.Core.Character
         
         private void Update()
         {
+            var distance = (_playerCharacterController.transform.position - transform.position).magnitude;
             if (_aggroed)
             {
                 _agent.SetDestination(_playerCharacterController.transform.position);
                 _agent.isStopped = Turned;
+
+                if (distance <= 1.5f)
+                {
+                    var direction = _playerCharacterController.transform.position - transform.position;
+                    _playerCharacterController.Hit(direction);
+                }
                 return;
             }
             
-            var distance = (_playerCharacterController.transform.position - transform.position).magnitude;
             if (distance <= _data.AggroRadius)
             {
                 _aggroed = true;

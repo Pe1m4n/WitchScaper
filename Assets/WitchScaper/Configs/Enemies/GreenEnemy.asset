@@ -16,4 +16,4 @@ MonoBehaviour:
   Color: 0
   TurnedTimeSeconds: 4
   AggroRadius: 8
-  Speed: 3
+  Speed: 2
