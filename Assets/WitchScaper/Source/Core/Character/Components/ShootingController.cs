@@ -42,7 +42,12 @@ namespace WitchScaper.Core.Character
             _transform.localScale =
                 new Vector3(mousePos.x > _transform.position.x? 1 : -1, _transform.localScale.y, _transform.localScale.z);
             
-            if (Input.GetKeyDown(KeyCode.Mouse0) && _state.PlayerState.TimeToReload <= 0f)
+            if (Input.GetKey(KeyCode.Mouse0) && _state.PlayerState.TimeToReload <= 0f)
+            {
+                _state.PlayerState.LoadProgress += Time.deltaTime;
+            }
+
+            if (Input.GetKeyUp(KeyCode.Mouse0) && _state.PlayerState.TimeToReload <= 0f)
             {
                 Shoot(mousePos);
             }
@@ -52,7 +57,7 @@ namespace WitchScaper.Core.Character
         {
             var rotation = Quaternion.FromToRotation(_shootingPivot.transform.position, mousePos);
 
-            var indexToShoot = 0;
+            var indexToShoot = (int) (_state.PlayerState.LoadProgress / 0.33f);
             var projectileData = _projectileDataContainer.GetDataForColor(_state.PlayerState.Ammo[indexToShoot]);
             _state.PlayerState.UseAmmo(indexToShoot);
             
@@ -61,6 +66,7 @@ namespace WitchScaper.Core.Character
                 .normalized);
 
             _state.PlayerState.TimeToReload = _data.ReloadSeconds;
+            _state.PlayerState.LoadProgress = 0f;
         }
     }
 }

@@ -12,8 +12,8 @@ namespace WitchScaper.Core.UI
     public class AmmoContainer : MonoBehaviour, IStateObserver
     {
         [SerializeField] private List<AmmoSlot> _slots;
-        [SerializeField] private ProjectileData.Type Type;
         [SerializeField] private Image _reloadMask;
+        [SerializeField] private Image _loadProgressbar;
         
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
 
@@ -38,6 +38,9 @@ namespace WitchScaper.Core.UI
                     {
                         _reloadMask.fillAmount = Mathf.Clamp01(v);
                     }).AddTo(_disposable);
+
+            state.Select(s => s.PlayerState.LoadProgress)
+                .Subscribe(v => _loadProgressbar.fillAmount = Mathf.Clamp01(v)).AddTo(_disposable);
         }
         
         public void SetColors(List<ColorType> colorTypes)
@@ -46,6 +49,11 @@ namespace WitchScaper.Core.UI
             {
                 _slots[i].SetColor(colorTypes[i]);
             }
+        }
+
+        public void SetLoadProgress(float progress)
+        {
+            _loadProgressbar.fillAmount = progress;
         }
 
         private void OnDestroy()

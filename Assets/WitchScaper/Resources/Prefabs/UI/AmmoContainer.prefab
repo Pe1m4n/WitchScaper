@@ -155,8 +155,8 @@ MonoBehaviour:
   - {fileID: 3258445540168333863}
   - {fileID: 3258445539465896112}
   - {fileID: 3258445538935375422}
-  Type: 1
   _reloadMask: {fileID: 1266323460313334819}
+  _loadProgressbar: {fileID: 781244615581095257}
 --- !u!1 &5509078831830633275
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,8 +265,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -5}
+  m_SizeDelta: {x: 0, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4461852409814934609
 CanvasRenderer:
