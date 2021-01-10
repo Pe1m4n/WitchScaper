@@ -64,7 +64,7 @@ namespace WitchScaper.Core.Character
                 Observable.EveryFixedUpdate().Subscribe(u =>
                 {
                     var targetPos = Vector2.Lerp(startPos, endPos, currentTime / dashTime);
-                    _transform.position = new Vector3(targetPos.x, targetPos.y, -0.1f);
+                    _transform.position = new Vector3(targetPos.x, targetPos.y, -0.3f);
                     currentTime += Time.fixedDeltaTime;
                     o.OnNext(Unit.Default);
                     if (currentTime >= dashTime)

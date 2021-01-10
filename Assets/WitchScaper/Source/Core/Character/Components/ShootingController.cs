@@ -45,7 +45,13 @@ namespace WitchScaper.Core.Character
             _transform.localScale =
                 new Vector3(mousePos.x > _transform.position.x? 1 : -1, _transform.localScale.y, _transform.localScale.z);
 
-            _arm.transform.rotation = Quaternion.FromToRotation(_arm.position, mousePos);
+            
+            Vector3 vectorToTarget = new Vector3(mousePos.x, mousePos.y, _arm.position.z) - _arm.position;
+            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 0) * vectorToTarget;
+ 
+            Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
+            
+            _arm.transform.rotation = targetRotation;
             
             if (Input.GetKey(KeyCode.Mouse0) && _state.PlayerState.TimeToReload <= 0f)
             {
@@ -60,14 +66,17 @@ namespace WitchScaper.Core.Character
 
         private void Shoot(Vector2 mousePos)
         {
-            var rotation = Quaternion.FromToRotation(_shootingPivot.transform.position, mousePos);
+            Vector3 vectorToTarget = new Vector3(mousePos.x, mousePos.y, _shootingPivot.position.z) - _shootingPivot.position;
+            Vector3 rotatedVectorToTarget = Quaternion.Euler(0, 0, 90f) * vectorToTarget;
+ 
+            Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: rotatedVectorToTarget);
 
             var indexToShoot = (int) (_state.PlayerState.LoadProgress / 0.33f);
             indexToShoot = Mathf.Clamp(indexToShoot, 0, 2);
             var projectileData = _projectileDataContainer.GetDataForColor(_state.PlayerState.Ammo[indexToShoot]);
             _state.PlayerState.UseAmmo(indexToShoot);
             
-            var projectile = _projectileFactory.Create(projectileData, _shootingPivot.position, rotation);
+            var projectile = _projectileFactory.Create(projectileData, _shootingPivot.position, targetRotation);
             projectile.SetForce((mousePos - new Vector2(_shootingPivot.position.x, _shootingPivot.position.y))
                 .normalized);
 
