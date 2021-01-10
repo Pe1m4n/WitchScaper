@@ -14,7 +14,9 @@ namespace WitchScaper.Installers
         [SerializeField] private Camera _camera;
         [SerializeField] private Transform _projectilesContainer;
         [SerializeField] private List<ProjectileData> _projectileDatas;
-        [SerializeField] private List<AmmoContainer> _ammoContainers;
+        [SerializeField] private AmmoContainer _ammoContainer;
+        [SerializeField] private QTEController _qteController;
+        [SerializeField] private PlayerCharacterController _playerCharacterController;
         
         public override void InstallBindings()
         {
@@ -24,8 +26,10 @@ namespace WitchScaper.Installers
             Container.Bind<ProjectileFactory>().AsSingle().WithArguments(_projectilesContainer);
             Container.Bind<ProjectileDataContainer>().AsSingle();
             Container.Bind<IEnumerable<ProjectileData>>().FromInstance(_projectileDatas).AsSingle();
-            Container.Bind<IEnumerable<IStateObserver>>().FromInstance(_ammoContainers).AsSingle();
+            Container.BindInterfacesAndSelfTo<AmmoContainer>().FromInstance(_ammoContainer).AsSingle();
             Container.BindInterfacesTo<StateContainer>().AsSingle().NonLazy();
+            Container.Bind<QTEController>().FromInstance(_qteController).AsSingle();
+            Container.Bind<PlayerCharacterController>().FromInstance(_playerCharacterController).AsSingle();
         }
     }
 }

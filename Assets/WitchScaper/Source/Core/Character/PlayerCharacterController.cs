@@ -1,7 +1,9 @@
 ﻿using System;
+using UniRx;
 using UnityEngine;
 using WitchScaper.Common;
 using WitchScaper.Core.State;
+using WitchScaper.Core.UI;
 using Zenject;
 
 namespace WitchScaper.Core.Character
@@ -12,13 +14,19 @@ namespace WitchScaper.Core.Character
         [SerializeField] private CharacterControllerData _data;
         [SerializeField] private Transform _shootingPivot;
         
+        private readonly CompositeDisposable _disposable = new CompositeDisposable();
         private MovementController _movementController;
         private ShootingController _shootingController;
+        private QTEController.QTEProgress _lastProgress;
+        private GameState _gameState;
+        private QTEController _qteController;
 
         [Inject]
         public void SetDependencies(GameState gameState, ProjectileFactory projectileFactory,
-            IInputSystem inputSystem, ProjectileDataContainer projectileDataContainer)
+            IInputSystem inputSystem, ProjectileDataContainer projectileDataContainer, QTEController qteController)
         {
+            _gameState = gameState;
+            _qteController = qteController;
             _movementController = new MovementController(GetComponent<Rigidbody2D>(), _data, gameState);
             _shootingController = new ShootingController(projectileFactory, _shootingPivot, gameState, inputSystem,
                 projectileDataContainer, _data);
@@ -28,6 +36,43 @@ namespace WitchScaper.Core.Character
         {
             _movementController?.Update();
             _shootingController?.Update();
+            
+            
+            if (_gameState.EnemiesForQTE.Count == 0)
+            {
+                return;
+            }
+
+            var enemy = GetClosestEnemy(out var distance);
+
+            if (distance < 10f && Input.GetKeyDown(KeyCode.Space))
+            {
+                _qteController.StartQTE().Subscribe(p => _lastProgress = p, () =>
+                {
+                    Debug.LogError(
+                        $"QTE {(_lastProgress.Successful.HasValue && _lastProgress.Successful.Value ? "SUCCESS" : "FAILED")}");
+                }).AddTo(_disposable);
+            }
+        }
+
+        private EnemyController GetClosestEnemy(out float distance)
+        {
+            var playerPos = transform.position;
+
+            var minDistance = float.MaxValue;
+            EnemyController closestEnemy = null;
+            for (int i = 0; i < _gameState.EnemiesForQTE.Count; i++)
+            {
+                var enemy = _gameState.EnemiesForQTE[i];
+                var enemyDistance = (enemy.transform.position - playerPos).magnitude;
+                if (enemyDistance < minDistance)
+                {
+                    closestEnemy = enemy;
+                }
+            }
+
+            distance = minDistance;
+            return closestEnemy;
         }
 
         private void FixedUpdate()

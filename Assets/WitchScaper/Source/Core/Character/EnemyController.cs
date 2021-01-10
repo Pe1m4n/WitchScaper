@@ -2,6 +2,8 @@
 using Pathfinding;
 using UniRx;
 using UnityEngine;
+using WitchScaper.Core.State;
+using WitchScaper.Core.UI;
 using Zenject;
 
 namespace WitchScaper.Core.Character
@@ -17,11 +19,12 @@ namespace WitchScaper.Core.Character
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
         private bool _turned;
         private bool _aggroed;
+        private GameState _gameState;
         
         [Inject]
-        public void SetDependencies()
+        public void SetDependencies(GameState gameState)
         {
-            
+            _gameState = gameState;
         }
 
         private void Awake()
@@ -40,14 +43,9 @@ namespace WitchScaper.Core.Character
             {
                 Turn(true);
             }
-            
-            if (_turned && projectileData.ProjectileType == ProjectileData.Type.Damage)
-            {
-                Destroy(gameObject);
-            }
         }
 
-        private void Turn(bool isTurned)
+        public void Turn(bool isTurned)
         {
             if (isTurned == _turned) return;
             
@@ -58,8 +56,13 @@ namespace WitchScaper.Core.Character
             
             if (isTurned)
             {
+                _gameState.EnemiesForQTE.Add(this);
                 Observable.Timer(TimeSpan.FromSeconds(_data.TurnedTimeSeconds)).Subscribe(o => Turn(false))
                     .AddTo(_disposable);
+            }
+            else
+            {
+                _gameState.EnemiesForQTE.Remove(this);   
             }
         }
 

@@ -26,47 +26,33 @@ namespace WitchScaper.Core.Character
 
         public void Update()
         {
-            _state.PlayerState.TimeToReloadAmmo -= Time.deltaTime;
-            _state.PlayerState.TimeToReloadHex -= Time.deltaTime;
+            _state.PlayerState.TimeToReload -= Time.deltaTime;
             
             if (_state.CurrentState != GameState.State.Battle)
             {
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) && _state.PlayerState.TimeToReloadHex <= 0f)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && _state.PlayerState.TimeToReload <= 0f)
             {
-                Shoot(false);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Mouse1) && _state.PlayerState.TimeToReloadAmmo <= 0f)
-            {
-                Shoot(true);
+                Shoot();
             }
         }
 
-        private void Shoot(bool isDamage)
+        private void Shoot()
         {
             var mousePos = _inputSystem.GetMousePosition();
             var rotation = Quaternion.FromToRotation(_shootingPivot.transform.position, mousePos);
 
             var indexToShoot = 0;
-            var ammoContainer = isDamage ? _state.PlayerState.DamageAmmo : _state.PlayerState.HexAmmo;
-            var projectileData = _projectileDataContainer.GetDataForColor(ammoContainer[indexToShoot], !isDamage);
-            _state.PlayerState.UseAmmo(isDamage, indexToShoot);
+            var projectileData = _projectileDataContainer.GetDataForColor(_state.PlayerState.Ammo[indexToShoot]);
+            _state.PlayerState.UseAmmo(indexToShoot);
             
             var projectile = _projectileFactory.Create(projectileData, _shootingPivot.position, rotation);
             projectile.SetForce((mousePos - new Vector2(_shootingPivot.position.x, _shootingPivot.position.y))
                 .normalized);
 
-            if (isDamage)
-            {
-                _state.PlayerState.TimeToReloadAmmo = _data.ReloadSeconds;
-            }
-            else
-            {
-                _state.PlayerState.TimeToReloadHex = _data.ReloadSeconds;
-            }
+            _state.PlayerState.TimeToReload = _data.ReloadSeconds;
         }
     }
 }
