@@ -29,7 +29,7 @@ namespace WitchScaper.Core.Character
             _qteController = qteController;
             _movementController = new MovementController(GetComponent<Rigidbody2D>(), _data, gameState, transform);
             _shootingController = new ShootingController(projectileFactory, _shootingPivot, gameState, inputSystem,
-                projectileDataContainer, _data);
+                projectileDataContainer, _data, transform);
         }
 
         private void Update()

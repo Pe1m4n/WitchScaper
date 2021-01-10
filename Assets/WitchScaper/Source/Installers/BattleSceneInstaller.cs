@@ -30,6 +30,7 @@ namespace WitchScaper.Installers
             Container.BindInterfacesTo<StateContainer>().AsSingle().NonLazy();
             Container.Bind<QTEController>().FromInstance(_qteController).AsSingle();
             Container.Bind<PlayerCharacterController>().FromInstance(_playerCharacterController).AsSingle();
+            Container.BindInterfacesTo<CameraArmSpring>().AsSingle().NonLazy();
         }
     }
 }

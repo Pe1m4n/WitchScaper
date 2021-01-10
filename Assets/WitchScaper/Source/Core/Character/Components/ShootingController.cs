@@ -12,9 +12,13 @@ namespace WitchScaper.Core.Character
         private readonly IInputSystem _inputSystem;
         private readonly ProjectileDataContainer _projectileDataContainer;
         private readonly CharacterControllerData _data;
+        private readonly Transform _transform;
 
         public ShootingController(ProjectileFactory projectileFactory, Transform shootingPivot,
-            GameState state, IInputSystem inputSystem, ProjectileDataContainer projectileDataContainer, CharacterControllerData data)
+            GameState state, IInputSystem inputSystem,
+            ProjectileDataContainer projectileDataContainer,
+            CharacterControllerData data,
+            Transform transform)
         {
             _projectileFactory = projectileFactory;
             _shootingPivot = shootingPivot;
@@ -22,6 +26,7 @@ namespace WitchScaper.Core.Character
             _inputSystem = inputSystem;
             _projectileDataContainer = projectileDataContainer;
             _data = data;
+            _transform = transform;
         }
 
         public void Update()
@@ -33,15 +38,18 @@ namespace WitchScaper.Core.Character
                 return;
             }
 
+            var mousePos = _inputSystem.GetMousePosition();
+            _transform.localScale =
+                new Vector3(mousePos.x > _transform.position.x? 1 : -1, _transform.localScale.y, _transform.localScale.z);
+            
             if (Input.GetKeyDown(KeyCode.Mouse0) && _state.PlayerState.TimeToReload <= 0f)
             {
-                Shoot();
+                Shoot(mousePos);
             }
         }
 
-        private void Shoot()
+        private void Shoot(Vector2 mousePos)
         {
-            var mousePos = _inputSystem.GetMousePosition();
             var rotation = Quaternion.FromToRotation(_shootingPivot.transform.position, mousePos);
 
             var indexToShoot = 0;
