@@ -4331,6 +4331,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1626336601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626336603}
+  - component: {fileID: 1626336602}
+  m_Layer: 0
+  m_Name: SceneLoaderObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1626336602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626336601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb32d48b4e518f4e9a54358b2917a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: TestScene
+--- !u!4 &1626336603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626336601}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5407252, y: 2.2927823, z: -11.128479}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638531638
 GameObject:
   m_ObjectHideFlags: 0
@@ -4749,6 +4793,8 @@ PlayableDirector:
     value: {fileID: 2021453285}
   - key: {fileID: 6646564421988815354, guid: 751819b71b5d4ab458838778c0895eaf, type: 2}
     value: {fileID: 424413572}
+  - key: {fileID: -384059632472701276, guid: 751819b71b5d4ab458838778c0895eaf, type: 2}
+    value: {fileID: 1626336601}
   m_ExposedReferences:
     m_References:
     - 35cd1cbd1e006f3418d467a006043bc0: {fileID: 1517403025}
