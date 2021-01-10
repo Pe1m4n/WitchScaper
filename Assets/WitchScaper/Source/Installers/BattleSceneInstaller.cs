@@ -18,6 +18,7 @@ namespace WitchScaper.Installers
         [SerializeField] private QTEController _qteController;
         [SerializeField] private PlayerCharacterController _playerCharacterController;
         [SerializeField] private HealthContainer _healthContainer;
+        [SerializeField] private AudioManager _audioManager;
         
         public override void InstallBindings()
         {
@@ -33,6 +34,7 @@ namespace WitchScaper.Installers
             Container.Bind<PlayerCharacterController>().FromInstance(_playerCharacterController).AsSingle();
             Container.BindInterfacesTo<CameraArmSpring>().AsSingle().NonLazy();
             Container.Bind<HealthContainer>().FromInstance(_healthContainer).AsSingle();
+            Container.Bind<AudioManager>().FromInstance(_audioManager).AsSingle();
         }
     }
 }

@@ -16,7 +16,20 @@ namespace WitchScaper.Common
         
         public void PlayShot()
         {
-            
+            if (_shotSound == null)
+            {
+                return;
+            }
+            _audioSource.PlayOneShot(_shotSound);
+        }
+        
+        public void PlayHit()
+        {
+            if (_hitSound == null)
+            {
+                return;
+            }
+            _audioSource.PlayOneShot(_hitSound);
         }
     }
 }

@@ -2,6 +2,7 @@
 using UniRx;
 using UnityEngine;
 using UnityEngine.AI;
+using WitchScaper.Common;
 using WitchScaper.Core.State;
 using Zenject;
 
@@ -19,12 +20,14 @@ namespace WitchScaper.Core.Character
         private bool _aggroed;
         private GameState _gameState;
         private PlayerCharacterController _playerCharacterController;
+        private AudioManager _audioManager;
         
         [Inject]
-        public void SetDependencies(GameState gameState, PlayerCharacterController playerCharacterController)
+        public void SetDependencies(GameState gameState, PlayerCharacterController playerCharacterController, AudioManager audioManager)
         {
             _gameState = gameState;
             _playerCharacterController = playerCharacterController;
+            _audioManager = audioManager;
         }
 
         private void Awake()
@@ -45,6 +48,7 @@ namespace WitchScaper.Core.Character
             if (!Turned && projectileData.ProjectileType == ProjectileData.Type.Hex)
             {
                 Turn(true);
+                _audioManager.PlayHit();
             }
         }
 

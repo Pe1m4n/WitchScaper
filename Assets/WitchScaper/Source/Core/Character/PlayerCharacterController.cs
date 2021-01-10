@@ -29,7 +29,7 @@ namespace WitchScaper.Core.Character
 
         [Inject]
         public void SetDependencies(GameState gameState, ProjectileFactory projectileFactory,
-            IInputSystem inputSystem, ProjectileDataContainer projectileDataContainer, QTEController qteController)
+            IInputSystem inputSystem, ProjectileDataContainer projectileDataContainer, QTEController qteController, AudioManager audioManager)
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             _gameState = gameState;
@@ -38,7 +38,7 @@ namespace WitchScaper.Core.Character
             _animationController = new AnimationController(_animator);
             _movementController = new MovementController(_rigidBody2d, _data, gameState, transform, _animationController);
             _shootingController = new ShootingController(projectileFactory, _shootingPivot, gameState, inputSystem,
-                projectileDataContainer, _data, transform, _arm);
+                projectileDataContainer, _data, transform, _arm, audioManager);
         }
 
         private void Update()

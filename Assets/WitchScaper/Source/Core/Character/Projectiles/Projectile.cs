@@ -2,6 +2,7 @@
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using WitchScaper.Common;
 using WitchScaper.Core.Character;
 using Zenject;
 
@@ -13,6 +14,7 @@ namespace WitchScaper.Core
         private readonly CompositeDisposable _disposable = new CompositeDisposable();
         private Rigidbody2D _rigidbody2D;
         private ProjectileData _data;
+        private AudioManager _audioManager;
 
         private void Awake()
         {
@@ -24,9 +26,10 @@ namespace WitchScaper.Core
         }
 
         [Inject]
-        public void SetDependencies(ProjectileData data)
+        public void SetDependencies(ProjectileData data, AudioManager audioManager)
         {
             _data = data;
+            _audioManager = audioManager;
         }
 
         public void SetForce(Vector3 direction)

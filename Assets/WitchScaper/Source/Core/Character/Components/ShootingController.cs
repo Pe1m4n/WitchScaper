@@ -15,12 +15,13 @@ namespace WitchScaper.Core.Character
         private readonly CharacterControllerData _data;
         private readonly Transform _transform;
         private readonly Transform _arm;
+        private readonly AudioManager _audioManager;
 
         public ShootingController(ProjectileFactory projectileFactory, Transform shootingPivot,
             GameState state, IInputSystem inputSystem,
             ProjectileDataContainer projectileDataContainer,
             CharacterControllerData data,
-            Transform transform, Transform arm)
+            Transform transform, Transform arm, AudioManager audioManager)
         {
             _projectileFactory = projectileFactory;
             _shootingPivot = shootingPivot;
@@ -30,6 +31,7 @@ namespace WitchScaper.Core.Character
             _data = data;
             _transform = transform;
             _arm = arm;
+            _audioManager = audioManager;
         }
 
         public void Update()
@@ -75,6 +77,7 @@ namespace WitchScaper.Core.Character
             indexToShoot = Mathf.Clamp(indexToShoot, 0, 2);
             var projectileData = _projectileDataContainer.GetDataForColor(_state.PlayerState.Ammo[indexToShoot]);
             _state.PlayerState.UseAmmo(indexToShoot);
+            _audioManager.PlayShot();
             
             var projectile = _projectileFactory.Create(projectileData, _shootingPivot.position, targetRotation);
             projectile.SetForce((mousePos - new Vector2(_shootingPivot.position.x, _shootingPivot.position.y))
