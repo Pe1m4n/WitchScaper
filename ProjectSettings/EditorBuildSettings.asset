@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/WitchScaper/Scenes/TestScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/WitchScaper/Scenes/End2.unity
+    guid: fdbcb05bf1261fe47bb59b6ae5a856d4
   m_configObjects: {}
