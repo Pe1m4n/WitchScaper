@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using WitchScaper.Common;
 using WitchScaper.Core.Character;
+using WitchScaper.Core.UI;
 
 namespace WitchScaper.Core.State
 {
@@ -14,8 +16,10 @@ namespace WitchScaper.Core.State
     {
         public static void UseAmmo(this PlayerState state, int index)
         {
-            state.Ammo.RemoveAt(index);
-            state.Ammo.Add(ColorTypeHelper.AllTypes[Random.Range(0, ColorTypeHelper.AllTypes.Count)]);
+            var newMagazine = new List<ColorType>(ColorTypeHelper.AllTypes);
+            newMagazine.Shuffle();
+            state.Ammo.Clear();
+            state.Ammo.AddRange(newMagazine);
         }
     }
 }

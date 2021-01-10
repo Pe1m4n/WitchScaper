@@ -6,11 +6,9 @@ namespace WitchScaper.Core
 {
     public class CameraArmSpring : ILateTickable
     {
-        private const float FOLLOW_SECONDS = 1.5f;
+        private const float FOLLOW_SECONDS = 2.5f;
         private readonly Camera _camera;
         private readonly PlayerCharacterController _playerCharacterController;
-        
-        private Vector3 _velocity = Vector3.zero;
 
         public CameraArmSpring(Camera camera, PlayerCharacterController playerCharacterController)
         {
@@ -26,7 +24,6 @@ namespace WitchScaper.Core
             var targetPos = Vector3.Slerp(_camera.transform.position, desiredPos, FOLLOW_SECONDS * Time.deltaTime);
 
             _camera.transform.position = targetPos;
-            //_camera.transform.position = Vector3.SmoothDamp(_camera.transform.position, desiredPos, ref _velocity, FOLLOW_SECONDS);
         }
     }
 }
